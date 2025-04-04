@@ -1,0 +1,354 @@
+/* General styles */
+.main-content {
+    padding: 20px;
+    background: #f8f9fa;
+    min-height: calc(100vh - 60px);
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 24px;
+    color: #2B4C8C;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Control Panel */
+.control-panel {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter Section - Grid Layout */
+.filter-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 70px;
+}
+
+.filter-group label {
+    font-size: 14px;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #2d3748;
+    background: #fff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.filter-select:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.2);
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    gap: 8px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-btn {
+    padding: 8px 16px;
+    background: #4299e1;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #3182ce;
+}
+
+/* Map Controls */
+.map-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.control-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    color: #4a5568;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    border-color: #4299e1;
+    color: #4299e1;
+}
+
+
+/* Map Container */
+.map-container {
+    position: relative;
+    height: 600px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Layer Controls */
+.layer-controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1500;
+}
+
+.layer-controls h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #2d3748;
+}
+
+.layer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.layer-item label {
+    font-size: 13px;
+    color: #4a5568;
+    cursor: pointer;
+}
+
+
+/* Legend */
+.map-legend {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1100;
+    max-width: 300px;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.map-legend h4,
+.map-legend h5 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #2d3748;
+}
+
+.legend-section {
+    margin-bottom: 15px;
+}
+
+.legend-section:last-child {
+    margin-bottom: 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #4a5568;
+}
+
+.legend-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+/* Legend Colors */
+.legend-icon.center {
+    background: #3498db; /* Blue for Research Center */
+}
+
+.legend-icon.lab {
+    background: #e67e22; /* Orange for Lab */
+}
+
+/* Example field colors */
+.legend-icon.cntt {
+    background: #2ecc71;
+}
+
+.legend-icon.sinhHoc {
+    background: #9b59b6;
+}
+.legend-icon.vatLieu {
+    background: #f39c12;
+}
+
+.legend-icon.moiTruong {
+    background: #1abc9c;
+}
+
+.legend-icon.yHoc {
+    background: #e74c3c;
+}
+
+.legend-icon.coKhi {
+    background: #34495e;
+}
+
+.legend-icon.hoaHoc {
+    background: #95a5a6;
+}
+
+.legend-icon.xayDung {
+    background: #d35400;
+}
+
+.legend-icon.dienTu {
+    background: #c0392b;
+}
+
+.legend-icon.khac {
+    background: #7f8c8d;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-section {
+        grid-template-columns: 1fr;
+    }
+
+    .map-container {
+        height: 400px;
+    }
+
+    .map-legend {
+        display: none; /* Optional: Hide legend on small screens */
+    }
+}
+
+/* Marker Styling */
+.map-marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ffffff; /* White background for marker */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    border: 2px solid #fff; /* White border */
+}
+
+.map-marker i {
+    font-size: 16px; /* Adjust icon size */
+    line-height: 1;
+}
+
+/* Specific marker colors based on TYPE (center, lab) */
+.map-marker.center i {
+    color: #3498db; /* Blue for center icon */
+}
+
+.map-marker.lab i {
+    color: #e67e22; /* Orange for lab icon */
+}
+
+/* Specific marker colors based on FIELD (Lĩnh vực nghiên cứu) */
+.map-marker.cntt i {
+    color: #2ecc71; /* Green for CNTT */
+}
+
+.map-marker.sinhHoc i {
+    color: #9b59b6; /* Purple for Sinh học */
+}
+
+.map-marker.vatLieu i {
+    color: #f39c12; /* Orange-yellow for Vật liệu mới */
+}
+
+.map-marker.moiTruong i {
+    color: #1abc9c; /* Turquoise for Môi trường */
+}
+
+.map-marker.yHoc i {
+    color: #e74c3c; /* Red for Y học */
+}
+
+.map-marker.coKhi i {
+    color: #34495e; /* Dark blue-gray for Cơ khí */
+}
+
+.map-marker.hoaHoc i {
+    color: #95a5a6; /* Light gray for Hóa học */
+}
+
+.map-marker.xayDung i {
+    color: #d35400; /* Darker orange for Xây dựng */
+}
+
+.map-marker.dienTu i {
+    color: #c0392b; /* Dark red for Điện tử */
+}
+
+.map-marker.khac i {
+    color: #7f8c8d; /* Gray for Khác */
+}
+
+
+/* Hover effect for markers */
+.map-marker:hover {
+    transform: scale(1.1); /* Slightly scale up on hover */
+    transition: transform 0.2s ease; /* Smooth hover animation */
+}

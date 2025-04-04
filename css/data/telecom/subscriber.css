@@ -1,0 +1,258 @@
+/* ===== VARIABLES ===== */
+:root {
+    --primary-color: #007BFF;      /* Màu xanh dương đậm cho viễn thông */
+    --secondary-color: #6C757D;
+    --success-color: #28A745;
+    --warning-color: #FFC107;
+    --danger-color: #DC3545;
+    --background-light: #f8f9fa;
+    --border-color: #dee2e6;
+    --text-dark: #495057;
+    --text-light: #6c757d;
+}
+
+/* ===== HIỂN THỊ FULL MÀN HÌNH ===== */
+.main-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== FILTER SECTION ===== */
+.filter-section {
+    background: var(--background-light);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-section .form-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.filter-section .form-select,
+.filter-section .form-control {
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+}
+
+/* ===== SUBSCRIBER LIST ===== */
+.infrastructure-list { /* Keeping the class name for consistency with HTML */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.infrastructure-list .table {
+    margin-bottom: 0;
+}
+
+.infrastructure-list .table thead th {
+    background-color: var(--background-light);
+    border-bottom: 2px solid var(--border-color);
+    padding: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+    vertical-align: middle;
+}
+
+.infrastructure-list .table tbody td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+/* Status badges */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.status-active {
+    background-color: #E8F5E9;
+    color: #388E3C;
+    border: 1px solid #C8E6C9;
+}
+
+.status-inactive {
+    background-color: #FFEBEE;
+    color: #D32F2F;
+    border: 1px solid #EF9A9A;
+}
+
+.status-pending {
+    background-color: #FFF3E0;
+    color: #F9A825;
+    border: 1px solid #FFE0B2;
+}
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-action {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-view {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-edit {
+    background-color: var(--warning-color);
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-header {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 15px 20px;
+}
+
+/* ===== LOADING SPINNER ===== */
+#loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .filter-section .row > div {
+        margin-bottom: 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn-action {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .table-responsive {
+        margin-bottom: 15px;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===== HOVER EFFECTS ===== */
+.infrastructure-list .table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05); /* Màu hover tương ứng với primary-color của viễn thông */
+    transition: background-color 0.2s ease;
+}
+
+.btn-action:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* ===== CUSTOM SCROLLBAR ===== */
+.table-responsive::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #0056b3; /* Màu hover tương ứng */
+}
+
+/* Form validation styles */
+.form-control:invalid,
+.form-select:invalid {
+    border-color: var(--danger-color);
+}
+
+.form-control:invalid:focus,
+.form-select:invalid:focus {
+    border-color: var(--danger-color);
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25); /* Màu shadow tương ứng */
+}
+
+/* Tooltip styles */
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+}

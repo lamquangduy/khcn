@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background: #f0f2f5;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background: white;
+    padding: 1rem;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 64px;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 90;
+}
+
+.menu-item {
+    padding: 0.75rem 1rem;
+    margin: 0.25rem 0;
+    border-radius: 4px;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #f0f2f5;
+}
+
+.menu-item.active {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.submenu {
+    margin-left: 20px;
+    display: none;
+}
+
+/* Adjust submenu items */
+.submenu .menu-item {
+    justify-content: flex-start;
+    gap: 10px;
+    padding-right: 25px;
+    /* Add padding to the right for the arrow */
+    position: relative;
+    /* Needed for absolute positioning of the arrow */
+}
+
+/* Adjust submenu arrow */
+.submenu .menu-item .arrow {
+    position: absolute;
+    right: 10px;
+}
+
+
+.submenu.active {
+    display: block;
+}
+
+
+.arrow {
+    transition: transform 0.3s;
+}
+
+.arrow.active {
+    transform: rotate(90deg);
+}
+
+.container {
+    display: flex;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    max-width: 100%;
+    position: relative;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    height: 100%;
+    flex: 1;
+    margin-left: 280px;
+    padding: 24px;
+    background: #ffffff;
+}
+
+.header {
+    background: white;
+    padding: 0.8rem 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo img {
+    height: 40px;
+}
+
+.header-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1565C0;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-user img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.sidebar .menu-item[href*="/data/infrastructure/port.html"] {
+    display: none !important;
+}
+
+/* Trong main.css */
+.floating-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    /* Điều chỉnh vị trí cao hơn để không che nút chatbot */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999;
+}
+
+.floating-btn {
+    width: 60px;
+    /* Kích thước cố định */
+    height: 60px;
+    border-radius: 50%;
+    /* Bo tròn */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 12px;
+}
+
+.floating-btn i {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cctv-btn {
+    background-color: #2196F3;
+}
+
+.sos-btn {
+    background-color: #f44336;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .floating-buttons {
+        right: 10px;
+        bottom: 80px;
+    }
+}

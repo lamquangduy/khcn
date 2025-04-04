@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Thuê bao</title>
+    <meta name="description" content="Quản lý thông tin về thuê bao viễn thông">
+    <meta name="keywords" content="thuê bao, di động, cố định, internet, viễn thông">
+    <link rel="icon" type="image/png" href="/assets/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/data/telecom/subscriber.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h2>Quản lý Thuê bao</h2>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section mb-4">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">Loại thuê bao:</label>
+                        <select class="form-select" id="subscriberType">
+                            <option value="">Tất cả</option>
+                            <option value="mobile">Di động</option>
+                            <option value="fixed">Cố định</option>
+                            <option value="internet">Internet</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Nhà mạng:</label>
+                        <select class="form-select" id="subscriberOperator">
+                            <option value="">Tất cả</option>
+                            <option value="viettel">Viettel</option>
+                            <option value="vnpt">VNPT</option>
+                            <option value="mobifone">Mobifone</option>
+                            <option value="fpt">FPT</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Gói cước:</label>
+                        <select class="form-select" id="subscriberPlan">
+                            <option value="">Tất cả</option>
+                            <option value="basic">Cơ bản</option>
+                            <option value="standard">Tiêu chuẩn</option>
+                            <option value="premium">Cao cấp</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Tìm kiếm:</label>
+                        <input type="text" class="form-control" id="searchInput" placeholder="Nhập số thuê bao, tên...">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button class="btn btn-primary me-2" onclick="filterSubscribers()">
+                            <i class="fas fa-search me-2"></i>Tìm kiếm
+                        </button>
+                        <button class="btn btn-success" onclick="addNewSubscriber()">
+                            <i class="fas fa-plus me-2"></i>Thêm mới
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscriber List -->
+            <div class="infrastructure-list">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>Số thuê bao</th>
+                                <th>Tên chủ thuê bao</th>
+                                <th>Loại thuê bao</th>
+                                <th>Nhà mạng</th>
+                                <th>Gói cước</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subscriberTableBody">
+                            <!-- Dữ liệu thuê bao sẽ được thêm bằng JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <span id="paginationInfo"></span>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-end" id="pagination">
+                        <!-- Pagination will be generated dynamically -->
+                    </ul>
+                </nav>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Subscriber Details -->
+    <div class="modal fade" id="subscriberModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal content will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading spinner -->
+    <div id="loading-spinner" class="d-none">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Đang tải...</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/data/telecom/subscriber.js"></script>
+</body>
+
+</html>

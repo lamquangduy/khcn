@@ -1,0 +1,219 @@
+/* --- info.css --- */
+
+/* ===== VARIABLES ===== */
+:root {
+    --primary-color: #28A745; /* Màu xanh lá cây đậm cho KHCN */
+    --secondary-color: #6C757D;
+    --success-color: #28A745;
+    --warning-color: #FFC107;
+    --danger-color: #DC3545;
+    --background-light: #f8f9fa;
+    --border-color: #dee2e6;
+    --text-dark: #495057;
+    --text-light: #6c757d;
+}
+
+/* ===== HIỂN THỊ FULL MÀNN HÌNH ===== */
+.main-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 24px;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== FILTER SECTION ===== */
+.filter-section {
+    background: var(--background-light);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-section .form-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.filter-section .form-select,
+.filter-section .form-control {
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+}
+
+/* ===== ENTERPRISE LIST ===== */
+.enterprise-list {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.enterprise-list .table {
+    margin-bottom: 0;
+}
+
+.enterprise-list .table thead th {
+    background-color: var(--background-light);
+    border-bottom: 2px solid var(--border-color);
+    padding: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+    vertical-align: middle;
+}
+
+.enterprise-list .table tbody td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+/* Type badges */
+.field-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.type-agriculture {
+    background-color: #E8F5E9;
+    color: #388E3C;
+     border: 1px solid #C8E6C9;
+}
+
+.type-health {
+     background-color: #E0F7FA;
+    color: #00ACC1;
+     border: 1px solid #B2EBF2;
+}
+
+.type-industry {
+    background-color: #FFFDE7;
+    color: #FFC107;
+    border: 1px solid #FFECB3;
+}
+
+.type-construction {
+    background-color: #F3E5F5;
+    color: #9C27B0;
+     border: 1px solid #CE93D8;
+}
+
+.type-it {
+     background-color: #E3F2FD;
+     color: #1565C0;
+     border: 1px solid #BBDEFB;
+}
+
+.enterprise-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.enterprise-startup {
+   background-color: #E1F5FE;
+    color: #039BE5;
+   border: 1px solid #B3E5FC;
+}
+
+.enterprise-small {
+     background-color: #F1EBF2;
+     color: #AB47BC;
+   border: 1px solid #CE93D8;
+}
+
+.enterprise-medium {
+    background-color: #FFF3E0;
+    color: #EF6C00;
+     border: 1px solid #FFD54F;
+}
+
+.enterprise-large {
+    background-color: #F0F4C3;
+    color: #9E9D24;
+     border: 1px solid #E6EE9C;
+}
+
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-action {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+    opacity: 0.9;
+}
+
+.btn-view {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-action.btn-map {
+    background-color: #4285f4; /* Google Maps color */
+    color: white;
+}
+
+.btn-edit {
+    background-color: var(--warning-color);
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-header {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+    padding: 15px 20px;
+}
+
+/* ===== LOADING SPINNER ===== */
+#loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
