@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - Sở Khoa học và Công nghệ</title>
+    <link rel="icon" type="image/png" href="/assets/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+    <!-- Header section -->
+    <div id="header-placeholder"></div>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <!-- Stats Cards -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-flask"></i></div>
+                    <div class="stat-info">
+                        <h3>Dự án nghiên cứu</h3>
+                        <p class="stat-number">150</p>
+                        <p class="stat-desc">Dự án</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="stat-info">
+                        <h3>Bằng sáng chế</h3>
+                        <p class="stat-number">50</p>
+                        <p class="stat-desc">Bằng</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-industry"></i></div>
+                    <div class="stat-info">
+                        <h3>Doanh nghiệp KHCN</h3>
+                        <p class="stat-number">300</p>
+                        <p class="stat-desc">Doanh nghiệp</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="stat-info">
+                        <h3>Nhà khoa học</h3>
+                        <p class="stat-number">600</p>
+                        <p class="stat-desc">Nhà khoa học</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-building"></i></div>
+                    <div class="stat-info">
+                        <h3>Doanh nghiệp CNTT</h3>
+                        <p class="stat-number">8500</p>
+                        <p class="stat-desc">Doanh nghiệp</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-wifi"></i></div>
+                    <div class="stat-info">
+                        <h3>Điểm phát wifi</h3>
+                        <p class="stat-number">400</p>
+                        <p class="stat-desc">Điểm</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-mail-bulk"></i></div>
+                    <div class="stat-info">
+                        <h3>Bưu cục</h3>
+                        <p class="stat-number">80</p>
+                        <p class="stat-desc">Điểm phục vụ</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="stat-info">
+                        <h3>Doanh thu CNTT</h3>
+                        <p class="stat-number">55,000</p>
+                        <p class="stat-desc">Tỷ đồng</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Biểu đồ cơ cấu dự án -->
+                <div class="chart-card">
+                    <h3>Cơ cấu dự án nghiên cứu</h3>
+                    <canvas id="projectChart"></canvas>
+                </div>
+
+                <!-- Biểu đồ phân bố kinh phí KHCN -->
+                <div class="chart-card">
+                    <h3>Phân bổ kinh phí KHCN</h3>
+                    <canvas id="fundingChart"></canvas>
+                </div>
+
+                <!-- Biểu đồ số lượng công bố khoa học -->
+                <div class="chart-card">
+                    <h3>Số lượng công bố khoa học</h3>
+                    <canvas id="publicationChart"></canvas>
+                </div>
+                <!-- Biểu đồ số lượng doanh nghiệp KHCN theo lĩnh vực -->
+                <div class="chart-card">
+                    <h3>Doanh nghiệp KHCN theo lĩnh vực</h3>
+                    <canvas id="enterpriseSectorChart"></canvas>
+                </div>
+                <!-- Biểu đồ cơ cấu doanh nghiệp CNTT -->
+                <div class="chart-card">
+                    <h3>Cơ cấu doanh nghiệp CNTT</h3>
+                    <canvas id="enterpriseChart"></canvas>
+                </div>
+                <!-- Biểu đồ phân bố lao động CNTT -->
+                <div class="chart-card">
+                    <h3>Phân bố lao động CNTT</h3>
+                    <canvas id="laborChart"></canvas>
+                </div>
+                <!-- Biểu đồ thuê bao băng rộng -->
+                <div class="chart-card">
+                    <h3>Thuê bao băng rộng</h3>
+                    <canvas id="broadbandChart"></canvas>
+                </div>
+                <!-- Biểu đồ doanh thu hoạt động dịch vụ Thông tin và Truyền thông -->
+                <div class="chart-card">
+                    <h3>Doanh thu hoạt động dịch vụ Thông tin và Truyền thông</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+
+                <!-- Cảnh báo -->
+                <div class="alert-section">
+                    <h3>Cảnh báo quan trọng</h3>
+                    <div class="alert-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Loại cảnh báo</th>
+                                    <th>Nội dung</th>
+                                    <th>Thời hạn</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><i class="fas fa-exclamation-triangle"></i> Dự án</td>
+                                    <td>Dự án ABC sắp hết thời hạn nghiệm thu</td>
+                                    <td>15/01/2025</td>
+                                    <td><span class="status urgent">Cần xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-copyright"></i> Sở hữu trí tuệ</td>
+                                    <td>Bằng sáng chế XYZ cần gia hạn</td>
+                                    <td>20/01/2025</td>
+                                    <td><span class="status warning">Đang xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-industry"></i> Doanh nghiệp</td>
+                                    <td>Doanh nghiệp PQR cần đánh giá lại</td>
+                                    <td>01/02/2025</td>
+                                    <td><span class="status pending">Chờ xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-wifi"></i> Wifi</td>
+                                    <td>Điểm phát wifi tại TTHC cần bảo trì</td>
+                                    <td>10/01/2025</td>
+                                    <td><span class="status warning">Đang xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-broadcast-tower"></i> Hạ tầng</td>
+                                    <td>Sự cố đường truyền khu vực Sơn Trà</td>
+                                    <td>01/01/2025</td>
+                                    <td><span class="status pending">Chờ xử lý</span></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-mail-bulk"></i> Giấy phép</td>
+                                    <td>Giấy phép bưu chính của Công ty ABC sắp hết hạn</td>
+                                    <td>15/01/2025</td>
+                                    <td><span class="status urgent">Cần xử lý</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- KPI Section -->
+                <div class="kpi-section">
+                    <h3>Chỉ số KPI chính</h3>
+                    <div class="kpi-grid">
+                        <div class="kpi-item">
+                            <h4>Tỷ lệ dự án KHCN nghiệm thu thành công</h4>
+                            <p class="kpi-value">85%</p>
+                        </div>
+                        <div class="kpi-item">
+                            <h4>Số lượng công bố KHCN/100 nhà khoa học</h4>
+                            <p class="kpi-value">20</p>
+                        </div>
+                        <div class="kpi-item">
+                            <h4>Số lượng bằng sáng chế/1000 dân</h4>
+                            <p class="kpi-value">10</p>
+                        </div>
+                        <div class="kpi-item">
+                            <h4>Tỷ lệ doanh nghiệp KHCN có hoạt động đổi mới</h4>
+                            <p class="kpi-value">75%</p>
+                        </div>
+                        <div class="kpi-item">
+                            <h4>Tỷ lệ hộ gia đình có internet</h4>
+                            <p class="kpi-value">90%</p>
+                        </div>
+                        <div class="kpi-item">
+                            <h4>Tỷ lệ thuê bao băng rộng cố định/100 dân</h4>
+                            <p class="kpi-value">32%</p>
+                        </div>
+                        <div class="kpi-item">
+                            <h4>Tỷ lệ thuê bao smartphone</h4>
+                            <p class="kpi-value">94%</p>
+                        </div>
+                        <div class="kpi-item">
+                            <h4>Tỷ lệ DN ứng dụng CNTT</h4>
+                            <p class="kpi-value">98%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+
+</html>

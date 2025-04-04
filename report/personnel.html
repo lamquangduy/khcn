@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo số người trong tổ chức KHCN - Sở KH&CN Đà Nẵng</title>
+     <link rel="icon" type="image/png" href="/assets/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/report/personnel.css">
+</head>
+<body>
+    <!-- Header section -->
+    <div id="header-placeholder"></div>
+
+    <div class="container">
+        <!-- Sidebar with multilevel menu -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <div class="report-page">
+                <h1>Số người trong tổ chức khoa học và công nghệ</h1>
+
+                <!-- Bộ lọc -->
+                <div class="filter-section">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="form-label">Năm</label>
+                            <select class="form-select" id="reportYear">
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <!-- Thêm các năm khác nếu cần -->
+                            </select>
+                        </div>
+                         <div class="col-md-3 d-flex align-items-end">
+                            <button class="btn btn-primary" onclick="loadPersonnelReport()">
+                                <i class="fas fa-search me-2"></i>Xem báo cáo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Công cụ xuất báo cáo -->
+                <div class="export-tools">
+                    <button class="btn btn-secondary" onclick="printReport()">
+                        <i class="fas fa-print me-2"></i>In báo cáo
+                    </button>
+                     <button class="btn btn-info" onclick="exportToPDF()">
+                        <i class="fas fa-file-pdf me-2"></i>Xuất PDF
+                    </button>
+                     <button class="btn btn-success" onclick="exportToExcel()">
+                        <i class="fas fa-file-excel me-2"></i>Xuất Excel
+                    </button>
+                </div>
+               <!-- Nội dung báo cáo -->
+               <div class="report-content" id="reportContent">
+                    <!-- Bảng báo cáo sẽ được load động tại đây -->
+                </div>
+            </div>
+        </main>
+    </div>
+      <script src="/js/main.js"></script>
+      <script src="/js/report/personnel.js"></script>
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://ioc.hctech.com.vn/assets/hcbot.min.js" data-client-id="E7WLVUu3EbDf"></script>
+</body>
+</html>

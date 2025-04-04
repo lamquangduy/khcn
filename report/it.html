@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo CNTT - Sở Thông tin và Truyền thông</title>
+    <link rel="icon" type="image/png" href="/assets/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/report/it.css">
+</head>
+<body>
+    <!-- Header section -->
+    <div id="header-placeholder"></div>
+
+    <div class="container">
+        <!-- Sidebar with multilevel menu -->
+        <div id="sidebar-placeholder"></div>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <div class="report-page">
+                <!-- Thanh điều hướng tab -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#summary" data-bs-toggle="tab">Báo cáo tổng hợp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#detail" data-bs-toggle="tab">Báo cáo chi tiết</a>
+                    </li>
+                </ul>
+
+                <!-- Tab content -->
+                <div class="tab-content">
+                    <!-- Tab Báo cáo tổng hợp -->
+                    <div class="tab-pane fade show active" id="summary">
+                        <!-- Bộ lọc -->
+                       <div class="filter-section">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="form-label">Loại hình CNTT</label>
+                                    <select class="form-select" id="itType">
+                                        <option value="all">Tất cả</option>
+                                        <option value="enterprise">Doanh nghiệp CNTT</option>
+                                        <option value="product">Sản phẩm CNTT</option>
+                                         <option value="human">Nhân lực CNTT</option>
+                                    </select>
+                                </div>
+                                 <div class="col-md-3">
+                                    <label class="form-label">Năm</label>
+                                    <select class="form-select" id="reportYear">
+                                        <option value="2024">2024</option>
+                                        <option value="2023">2023</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Quận/Huyện</label>
+                                    <select class="form-select" id="district">
+                                         <option value="all">Tất cả</option>
+                                        <option value="haichau">Hải Châu</option>
+                                        <option value="thanhkhe">Thanh Khê</option>
+                                        <option value="sontra">Sơn Trà</option>
+                                        <option value="nguhanhson">Ngũ Hành Sơn</option>
+                                        <option value="lienchieu">Liên Chiểu</option>
+                                        <option value="camle">Cẩm Lệ</option>
+                                        <option value="hoavang">Hòa Vang</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3 d-flex align-items-end">
+                                    <button class="btn btn-primary" onclick="loadITReport()">
+                                        <i class="fas fa-search me-2"></i>Xem báo cáo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Công cụ xuất báo cáo -->
+                        <div class="export-tools">
+                            <button class="btn btn-secondary" onclick="printReport()">
+                                <i class="fas fa-print me-2"></i>In báo cáo
+                            </button>
+                            <button class="btn btn-info" onclick="exportToPDF()">
+                                <i class="fas fa-file-pdf me-2"></i>Xuất PDF
+                            </button>
+                            <button class="btn btn-success" onclick="exportToExcel()">
+                                <i class="fas fa-file-excel me-2"></i>Xuất Excel
+                            </button>
+                        </div>
+
+                        <!-- Nội dung báo cáo -->
+                        <div class="report-content" id="reportContent">
+                            <!-- Nội dung sẽ được load động -->
+                        </div>
+                    </div>
+
+                     <!-- Tab Báo cáo chi tiết -->
+                    <div class="tab-pane fade" id="detail">
+                        <!-- Bộ lọc chi tiết -->
+                        <div class="filter-section">
+                            <div class="row">
+                                 <div class="col-md-3">
+                                    <label class="form-label">Loại hình</label>
+                                    <select class="form-select" id="detailITType">
+                                        <option>Tất cả</option>
+                                        <option>Công ty phần mềm</option>
+                                        <option>Công ty dịch vụ IT</option>
+                                        <option>Sản phẩm phần mềm</option>
+                                        <option>Kỹ sư phần mềm</option>
+                                        <option>Nhân viên IT</option>
+                                    </select>
+                                </div>
+                                 <div class="col-md-3">
+                                    <label class="form-label">Trạng thái</label>
+                                     <select class="form-select" id="status">
+                                        <option>Tất cả</option>
+                                        <option>Hoạt động</option>
+                                        <option>Tạm dừng</option>
+                                    </select>
+                                </div>
+                                 <div class="col-md-3">
+                                    <label class="form-label">Thời gian</label>
+                                    <select class="form-select" id="timeRange">
+                                        <option>Năm 2024</option>
+                                        <option>Quý 1/2024</option>
+                                        <option>Tháng 3/2024</option>
+                                    </select>
+                                </div>
+                                 <div class="col-md-3 d-flex align-items-end">
+                                    <button class="btn btn-primary" onclick="loadDetailReport()">
+                                        <i class="fas fa-search me-2"></i>Xem báo cáo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nội dung báo cáo chi tiết -->
+                        <div class="report-content">
+                             <!-- Công cụ xuất báo cáo -->
+                            <div class="export-tools">
+                                <button class="btn btn-secondary" onclick="printReport()">
+                                    <i class="fas fa-print me-2"></i>In báo cáo
+                                </button>
+                                <button class="btn btn-info" onclick="exportToPDF()">
+                                    <i class="fas fa-file-pdf me-2"></i>Xuất PDF
+                                </button>
+                                <button class="btn btn-success" onclick="exportToExcel()">
+                                    <i class="fas fa-file-excel me-2"></i>Xuất Excel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/report/it.js"></script>
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="https://ioc.hctech.com.vn/assets/hcbot.min.js" data-client-id="E7WLVUu3EbDf"></script>
+</body>
+</html>

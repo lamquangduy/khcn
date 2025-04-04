@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản đồ Khu Công nghệ - Sở KH&CN Đà Nẵng</title>
+    <link rel="icon" type="image/png" href="/assets/icon.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/gis/zone.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Bản đồ Khu Công nghệ Đà Nẵng</h1>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <!-- Loại hình khu công nghệ -->
+                <div class="filter-group">
+                    <label for="zoneType">Loại hình</label>
+                    <select id="zoneType" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="industrialPark">Khu Công nghiệp</option>
+                        <option value="hightechPark">Khu Công nghệ cao</option>
+                        <option value="itPark">Khu Công viên phần mềm</option>
+                    </select>
+                </div>
+
+                <!-- Quận/Huyện -->
+                <div class="filter-group">
+                    <label for="district">Quận/Huyện</label>
+                    <select id="district" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="haiChau">Hải Châu</option>
+                        <option value="thanhKhe">Thanh Khê</option>
+                        <option value="sonTra">Sơn Trà</option>
+                        <option value="nguHanhSon">Ngũ Hành Sơn</option>
+                        <option value="lienChieu">Liên Chiểu</option>
+                        <option value="camLe">Cẩm Lệ</option>
+                        <option value="hoaVang">Hòa Vang</option>
+                        <option value="hoangSa">Hoàng Sa</option>
+                    </select>
+                </div>
+
+                <!-- Trạng thái hoạt động -->
+                <div class="filter-group">
+                    <label for="status">Trạng thái</label>
+                    <select id="status" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="operating">Đang hoạt động</option>
+                        <option value="planning">Đang quy hoạch</option>
+                    </select>
+                </div>
+
+
+                <!-- Tìm kiếm -->
+                <div class="filter-group">
+                    <label for="searchInput">Tìm kiếm</label>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Nhập tên khu công nghệ...">
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Controls -->
+            <div class="map-controls">
+                <button id="toggleHeatmap" class="control-btn">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Bản đồ nhiệt</span>
+                </button>
+                <button id="exportData" class="control-btn">
+                    <i class="fas fa-download"></i>
+                    <span>Xuất dữ liệu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Map Container -->
+        <div class="map-container">
+            <!-- Main Map -->
+            <div id="map"></div>
+
+            <!-- Layer Controls -->
+            <div class="layer-controls">
+                <h4>Lớp bản đồ</h4>
+                <div class="layer-item">
+                    <input type="radio" id="layerSatellite" name="mapLayer" value="satellite">
+                    <label for="layerSatellite">Vệ tinh</label>
+                </div>
+                <div class="layer-item">
+                    <input type="radio" id="layerTerrain" name="mapLayer" value="terrain">
+                    <label for="layerTerrain">Địa hình</label>
+                </div>
+                <div class="layer-item">
+                    <input type="radio" id="layerNormal" name="mapLayer" value="normal" checked>
+                    <label for="layerNormal">Bản đồ thường</label>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="map-legend">
+                <h4>Chú thích</h4>
+                <div class="legend-section">
+                    <h5>Loại hình khu</h5>
+                    <div class="legend-item">
+                        <span class="fas fa-industry"></span>
+                        <span>Khu Công nghiệp</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="fas fa-rocket"></span>
+                        <span>Khu Công nghệ cao</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="fas fa-laptop-code"></span>
+                        <span>Khu Công viên phần mềm</span>
+                    </div>
+                </div>
+                <div class="legend-section">
+                    <h5>Trạng thái</h5>
+                    <div class="legend-item">
+                        <span class="legend-icon operating"></span>
+                        <span>Đang hoạt động</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon planning"></span>
+                        <span>Đang quy hoạch</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.heat"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/gis/zone.js"></script>
+</body>
+
+</html>

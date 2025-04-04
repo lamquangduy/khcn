@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bản đồ Cơ sở Nghiên cứu KHCN - Sở KH&CN Đà Nẵng</title>
+    <link rel="icon" type="image/png" href="/assets/icon.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/gis/research.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Sidebar -->
+    <div id="sidebar-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Bản đồ Cơ sở Nghiên cứu Khoa học và Công nghệ Đà Nẵng</h1>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <!-- Loại hình cơ sở -->
+                <div class="filter-group">
+                    <label for="researchType">Loại hình</label>
+                    <select id="researchType" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="center">Trung tâm Nghiên cứu</option>
+                        <option value="lab">Phòng Thí nghiệm</option>
+                    </select>
+                </div>
+
+                <!-- Quận/Huyện -->
+                <div class="filter-group">
+                    <label for="district">Quận/Huyện</label>
+                    <select id="district" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="haiChau">Hải Châu</option>
+                        <option value="thanhKhe">Thanh Khê</option>
+                        <option value="sonTra">Sơn Trà</option>
+                        <option value="nguHanhSon">Ngũ Hành Sơn</option>
+                        <option value="lienChieu">Liên Chiểu</option>
+                        <option value="camLe">Cẩm Lệ</option>
+                        <option value="hoaVang">Hòa Vang</option>
+                        <option value="hoangSa">Hoàng Sa</option>
+                    </select>
+                </div>
+
+                <!-- Lĩnh vực nghiên cứu -->
+                <div class="filter-group">
+                    <label for="field">Lĩnh vực</label>
+                    <select id="field" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="cntt">Công nghệ Thông tin</option>
+                        <option value="sinhHoc">Sinh học</option>
+                        <option value="vatLieu">Vật liệu Mới</option>
+                        <option value="moiTruong">Môi trường</option>
+                        <option value="yHoc">Y học</option>
+                        <option value="coKhi">Cơ khí</option>
+                        <option value="hoaHoc">Hóa học</option>
+                        <option value="xayDung">Xây dựng</option>
+                        <option value="dienTu">Điện tử</option>
+                        <option value="khac">Khác</option>
+                    </select>
+                </div>
+
+                <!-- Năm thành lập/thành lập -->
+                <div class="filter-group">
+                    <label for="yearEstablished">Năm thành lập</label>
+                    <select id="yearEstablished" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <!-- Generate years dynamically or hardcode ranges -->
+                        <option value="2020">Sau 2020</option>
+                        <option value="2015-2019">2015-2019</option>
+                        <option value="2010-2014">2010-2014</option>
+                        <option value="2000-2009">2000-2009</option>
+                        <option value="before-2000">Trước 2000</option>
+                    </select>
+                </div>
+
+                <!-- Số lượng nhân viên -->
+                <div class="filter-group">
+                    <label for="staffCount">Số nhân viên</label>
+                    <select id="staffCount" class="filter-select">
+                        <option value="">Tất cả</option>
+                        <option value="small">Dưới 50</option>
+                        <option value="medium">50 - 150</option>
+                        <option value="large">Trên 150</option>
+                    </select>
+                </div>
+
+
+                <!-- Tìm kiếm -->
+                <div class="filter-group">
+                    <label for="searchInput">Tìm kiếm</label>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Nhập tên hoặc địa chỉ...">
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Controls -->
+            <div class="map-controls">
+                <button id="toggleHeatmap" class="control-btn">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Bản đồ nhiệt</span>
+                </button>
+                <button id="exportData" class="control-btn">
+                    <i class="fas fa-download"></i>
+                    <span>Xuất dữ liệu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Map Container -->
+        <div class="map-container">
+            <!-- Main Map -->
+            <div id="map"></div>
+
+            <!-- Layer Controls -->
+            <div class="layer-controls">
+                <h4>Lớp bản đồ</h4>
+                <div class="layer-item">
+                    <input type="radio" id="layerSatellite" name="mapLayer" value="satellite">
+                    <label for="layerSatellite">Vệ tinh</label>
+                </div>
+                <div class="layer-item">
+                    <input type="radio" id="layerTerrain" name="mapLayer" value="terrain">
+                    <label for="layerTerrain">Địa hình</label>
+                </div>
+                <div class="layer-item">
+                    <input type="radio" id="layerNormal" name="mapLayer" value="normal" checked>
+                    <label for="layerNormal">Bản đồ thường</label>
+                </div>
+            </div>
+
+
+            <!-- Legend -->
+            <div class="map-legend">
+                <h4>Chú thích</h4>
+                <div class="legend-section">
+                    <h5>Loại hình cơ sở</h5>
+                    <div class="legend-item">
+                        <span class="fas fa-university"></span>
+                        <span>Trung tâm Nghiên cứu</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="fas fa-vial"></span>
+                        <span>Phòng Thí nghiệm</span>
+                    </div>
+                </div>
+                <div class="legend-section">
+                    <h5>Lĩnh vực nghiên cứu</h5>
+                    <div class="legend-item">
+                        <span class="legend-icon cntt"></span>
+                        <span>CNTT</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon sinhHoc"></span>
+                        <span>Sinh học</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon vatLieu"></span>
+                        <span>Vật liệu Mới</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon moiTruong"></span>
+                        <span>Môi trường</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon yHoc"></span>
+                        <span>Y học</span>
+                    </div>
+                     <div class="legend-item">
+                        <span class="legend-icon coKhi"></span>
+                        <span>Cơ khí</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon hoaHoc"></span>
+                        <span>Hóa học</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon xayDung"></span>
+                        <span>Xây dựng</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon dienTu"></span>
+                        <span>Điện tử</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon khac"></span>
+                        <span>Khác</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.heat"></script> <!-- Include heatmap library -->
+    <script src="/js/main.js"></script>
+    <script src="/js/gis/research.js"></script>
+</body>
+
+</html>
